@@ -75,7 +75,7 @@ This project is part of the **Kaggle Agents Intensive Capstone**. It demonstrate
 ### **1. Clone the Repository**
 
 ```bash
-git clone https://github.com/<your-username>/agents-intensive-capstone.git
+git clone https://github.com/theshikhardwivedi/agents-intensive-capstone.git
 cd agents-intensive-capstone
 ```
 
