@@ -1,12 +1,6 @@
-from typing import Any, Dict, List
-from google_adk import ToolAgent, AgentContext
+from src.utils import gemini_generate
 
-
-class SchedulerAgent(ToolAgent):
-    """Produces a schedule aligned with constraints and availability."""
-
-    def run(self, context: AgentContext) -> Dict[str, Any]:
-        prioritized: List[Dict[str, Any]] = context.get("prioritized_tasks", [])
-        schedule: Dict[str, Any] = {"plan": prioritized}
-        context.set("schedule", schedule)
-        return schedule
+class SchedulerAgent:
+    def run(self, prioritized_tasks):
+        prompt = f"Create a structured schedule for these tasks: {prioritized_tasks}. Include start_time, end_time, and dependencies. Return JSON."
+        return gemini_generate(prompt, json_output=True)
