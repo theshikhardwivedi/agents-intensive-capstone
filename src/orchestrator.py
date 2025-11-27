@@ -1,7 +1,7 @@
 from typing import Any, Dict
 
 # Assuming these come from the Google ADK package available in your environment
-from google_adk import SequentialAgent, LoopAgent, ToolAgent, AgentContext
+from google.adk.agents import SequentialAgent, LoopAgent, AgentContext
 
 
 class ExtractorAgent(ToolAgent):
