@@ -1,15 +1,6 @@
-from typing import Any, Dict, List
-from google_adk import ToolAgent, AgentContext
+from src.utils import gemini_generate
 
-
-class ExtractorAgent(ToolAgent):
-    """Parses raw inputs and yields normalized task objects."""
-
-    def run(self, context: AgentContext) -> List[Dict[str, Any]]:
-        input_data = context.get("input_data")
-        tasks = [
-            {"title": "Draft status update", "deadline": None, "metadata": {"source": "text"}},
-            {"title": "Organize deck", "deadline": None, "metadata": {"source": "text"}},
-        ]
-        context.set("tasks", tasks)
-        return tasks
+class ExtractorAgent:
+    def run(self, input_text):
+        prompt = f"Extract actionable tasks from the following text:\n{input_text}\nReturn as JSON list."
+        return gemini_generate(prompt, json_output=True)
